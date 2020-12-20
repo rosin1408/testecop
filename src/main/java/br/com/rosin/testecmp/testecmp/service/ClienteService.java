@@ -16,6 +16,9 @@ public class ClienteService {
     private final ClienteRepository repository;
 
     public Cliente salvar(Cliente cliente) {
+        if (cliente.getIdade() == null) {
+            cliente.calculaIdade();
+        }
         return repository.save(cliente);
     }
 

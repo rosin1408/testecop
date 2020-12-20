@@ -44,6 +44,18 @@ public class ClienteServiceTest {
     }
 
     @Test
+    public void deveCalcularIdadeDoClienteQuandoNaoInformado() {
+        Cidade cidade = new Cidade("1", "Chapecó", "SC");
+        Cliente cliente = new Cliente("1", "Roberto Rosin", Sexo.MASCULINO, LocalDate.of(1990,8,14), null, cidade);
+        when(repository.save(cliente)).thenReturn(cliente);
+
+        final Cliente clienteSalvo = service.salvar(cliente);
+
+        verify(repository, only()).save(new Cliente("1", "Roberto Rosin", Sexo.MASCULINO, LocalDate.of(1990,8,14), 30, cidade));
+        assertThat(clienteSalvo).isEqualTo(cliente);
+    }
+
+    @Test
     public void deveBuscarClientePorNomeInvocandoMetodoDoRepository() {
         Cidade cidade = new Cidade("1", "Chapecó", "SC");
         Cliente cliente = new Cliente("1", "Roberto Rosin", Sexo.MASCULINO, LocalDate.of(1990,8,14), 30, cidade);

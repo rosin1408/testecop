@@ -1,5 +1,6 @@
 package br.com.rosin.testecmp.testecmp.model;
 
+import java.time.Period;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.*;
@@ -27,4 +28,8 @@ public class Cliente {
     private Integer idade;
     @NotNull(message = "Informe a cidade do cliente")
     private Cidade cidade;
+
+    public void calculaIdade() {
+        setIdade(Period.between(dataNascimento, LocalDate.now()).getYears());
+    }
 }
