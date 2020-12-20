@@ -2,6 +2,7 @@ package br.com.rosin.testecmp.testecmp.controller;
 
 import br.com.rosin.testecmp.testecmp.model.Cidade;
 import br.com.rosin.testecmp.testecmp.service.CidadeService;
+import javax.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ public class CidadeController {
     private final CidadeService service;
 
     @PostMapping
-    public Cidade novo(@RequestBody Cidade cidade) {
+    public Cidade novo(@RequestBody @Valid Cidade cidade) {
         return service.salvar(cidade);
     }
 

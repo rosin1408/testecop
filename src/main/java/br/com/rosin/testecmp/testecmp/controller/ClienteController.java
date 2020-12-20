@@ -2,6 +2,7 @@ package br.com.rosin.testecmp.testecmp.controller;
 
 import br.com.rosin.testecmp.testecmp.model.Cliente;
 import br.com.rosin.testecmp.testecmp.service.ClienteService;
+import javax.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,7 @@ public class ClienteController {
     private final ClienteService service;
 
     @PostMapping
-    private Cliente novo(@RequestBody Cliente cliente) {
+    private Cliente novo(@RequestBody @Valid Cliente cliente) {
         return service.salvar(cliente);
     }
 

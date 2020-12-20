@@ -46,6 +46,26 @@ public class CidadeControllerTest {
     }
 
     @Test
+    public void deveRetornarErro400QuandoNomeDaCidadeNaoPreenchido() {
+        final Cidade cidade = new Cidade(null, "", "RS");
+
+        final String url = "http://localhost:" + port + "/cidade";
+        final ResponseEntity<Cidade> response = restTemplate.postForEntity(url, cidade, Cidade.class);
+
+        assertThat(response.getStatusCodeValue()).isEqualTo(400);
+    }
+
+    @Test
+    public void deveRetornarErro400QuandoUfDaCidadeNaoPreenchido() {
+        final Cidade cidade = new Cidade(null, "Erechim", "");
+
+        final String url = "http://localhost:" + port + "/cidade";
+        final ResponseEntity<Cidade> response = restTemplate.postForEntity(url, cidade, Cidade.class);
+
+        assertThat(response.getStatusCodeValue()).isEqualTo(400);
+    }
+
+    @Test
     public void deveConsultarCidadePeloNome() {
         final String url = "http://localhost:" + port + "/cidade/buscarPorNome?nome=chap";
         final ResponseEntity<List<Cidade>> response = restTemplate.exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<>() {

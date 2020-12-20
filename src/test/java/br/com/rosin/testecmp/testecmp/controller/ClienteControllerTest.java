@@ -50,6 +50,42 @@ public class ClienteControllerTest {
     }
 
     @Test
+    public void deveRetornarErro400QuandoNomeDoClienteNaoPreenchido() {
+        final Cliente cliente = new Cliente(null, "", Sexo.FEMININO, LocalDate.of(1995, 7, 2), 25, chapeco());
+        final String url = "http://localhost:" + port + "/cliente";
+        final ResponseEntity<Cliente> response = restTemplate.postForEntity(url, cliente, Cliente.class);
+
+        assertThat(response.getStatusCodeValue()).isEqualTo(400);
+    }
+
+    @Test
+    public void deveRetornarErro400QuandoSexoDoClienteNaoPreenchido() {
+        final Cliente cliente = new Cliente(null, "Novo Cliente", null, LocalDate.of(1995, 7, 2), 25, chapeco());
+        final String url = "http://localhost:" + port + "/cliente";
+        final ResponseEntity<Cliente> response = restTemplate.postForEntity(url, cliente, Cliente.class);
+
+        assertThat(response.getStatusCodeValue()).isEqualTo(400);
+    }
+
+    @Test
+    public void deveRetornarErro400QuandoDataDeNascimentoDoClienteNaoPreenchido() {
+        final Cliente cliente = new Cliente(null, "Novo Cliente", Sexo.FEMININO, null, 25, chapeco());
+        final String url = "http://localhost:" + port + "/cliente";
+        final ResponseEntity<Cliente> response = restTemplate.postForEntity(url, cliente, Cliente.class);
+
+        assertThat(response.getStatusCodeValue()).isEqualTo(400);
+    }
+
+    @Test
+    public void deveRetornarErro400QuandoCidadeDoClienteNaoPreenchido() {
+        final Cliente cliente = new Cliente(null, "Novo Cliente", Sexo.FEMININO, LocalDate.of(1995, 7, 2), 25, null);
+        final String url = "http://localhost:" + port + "/cliente";
+        final ResponseEntity<Cliente> response = restTemplate.postForEntity(url, cliente, Cliente.class);
+
+        assertThat(response.getStatusCodeValue()).isEqualTo(400);
+    }
+
+    @Test
     public void deveConsultarClientesPorNome() {
         final String url = "http://localhost:" + port + "/cliente/buscarPorNome?nome=roberto";
         final ResponseEntity<List<Cliente>> response = restTemplate.exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
