@@ -35,12 +35,12 @@ public class CidadeControllerTest {
 
     @Test
     public void deveCadastrarCidade() {
-        final Cidade cidade = new Cidade(null, "Chapecó", "SC");
+        final Cidade cidade = new Cidade(null, "Erechim", "RS");
 
         final String url = "http://localhost:" + port + "/cidade";
         restTemplate.postForObject(url, cidade, Cidade.class);
 
-        final Cidade cidadeCadastrada = cidadeRepository.findByNomeLikeIgnoreCase("Chapecó").stream().findFirst().orElseThrow();
+        final Cidade cidadeCadastrada = cidadeRepository.findByNomeLikeIgnoreCase("Erechim").stream().findFirst().orElseThrow();
 
         assertThat(cidadeCadastrada).isNotNull();
     }

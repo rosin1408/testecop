@@ -1,10 +1,15 @@
 package br.com.rosin.testecmp.testecmp;
 
+import br.com.rosin.testecmp.testecmp.model.Cidade;
+import br.com.rosin.testecmp.testecmp.model.Cliente;
+import br.com.rosin.testecmp.testecmp.model.Sexo;
 import br.com.rosin.testecmp.testecmp.repository.CidadeRepository;
 import br.com.rosin.testecmp.testecmp.repository.ClienteRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 @AllArgsConstructor

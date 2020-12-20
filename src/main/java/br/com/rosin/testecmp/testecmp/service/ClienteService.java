@@ -2,11 +2,12 @@ package br.com.rosin.testecmp.testecmp.service;
 
 import br.com.rosin.testecmp.testecmp.model.Cliente;
 import br.com.rosin.testecmp.testecmp.repository.ClienteRepository;
-import java.util.List;
-import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor

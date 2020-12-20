@@ -2,9 +2,10 @@ package br.com.rosin.testecmp.testecmp.service;
 
 import br.com.rosin.testecmp.testecmp.model.Cidade;
 import br.com.rosin.testecmp.testecmp.repository.CidadeRepository;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
